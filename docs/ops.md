@@ -10,9 +10,10 @@ This document describes how to perform organization-level operations, primarily 
 
 ### Overview
 
-The label sync script copies labels from a **source repository** (`shoppy`) to all **target repositories** in the organization. This ensures consistent labeling across all commerce-atoms projects.
+The label sync script reads labels from **`labels/labels.json`** (source of truth) and syncs them to all **target repositories** in the organization. This ensures consistent labeling across all commerce-atoms projects.
 
 **Behavior:**
+
 - ✅ Creates missing labels in target repos
 - ✅ Updates color/description if different
 - ❌ **Never deletes** existing labels (non-destructive)
@@ -20,23 +21,27 @@ The label sync script copies labels from a **source repository** (`shoppy`) to a
 ### Prerequisites
 
 1. **GitHub CLI installed**
+
    ```bash
    # macOS
    brew install gh
-   
+
    # Or download from: https://cli.github.com/
    ```
 
 2. **GitHub CLI authenticated**
+
    ```bash
    gh auth login
    ```
-   
+
    Follow the prompts to authenticate. You'll need:
+
    - GitHub account with access to `commerce-atoms` organization
    - Appropriate permissions (write access to repositories)
 
 3. **Verify authentication**
+
    ```bash
    gh auth status
    ```
@@ -46,30 +51,33 @@ The label sync script copies labels from a **source repository** (`shoppy`) to a
 ⚠️ **Warning:** Do not run label sync from forks. Always run from the main `commerce-atoms/.github` repository.
 
 1. **Navigate to the `.github` repository**
+
    ```bash
    cd ~/Projects/commerce-atoms/.github
    ```
 
 2. **Run the sync script**
+
    ```bash
    node scripts/sync-labels.mjs
    ```
 
 3. **Review the output**
-   
+
    The script will:
-   - Fetch labels from `commerce-atoms/shoppy` (source)
-   - Sync to each target repo: `agents`, `hydrogen-storefront-starter`, `mcp-hydrogen-kit`
+
+   - Load labels from `labels/labels.json` (source of truth)
+   - Sync to each target repo: `shoppy`, `agents`, `hydrogen-storefront-starter`, `mcp-hydrogen-kit`
    - Show progress for each label (created, updated, or skipped)
    - Display a summary at the end
 
 ### Example Output
 
-```
+```text
 🚀 Label Sync Script
 
-Source: commerce-atoms/shoppy
-Targets: agents, hydrogen-storefront-starter, mcp-hydrogen-kit
+Source: labels/labels.json (source of truth)
+Targets: shoppy, agents, hydrogen-storefront-starter, mcp-hydrogen-kit
 
 📦 Syncing labels to commerce-atoms/agents...
   ✅ Created: bug
@@ -100,8 +108,7 @@ Run the sync script:
 
 - **Once initially** to set up labels across all repos
 - **When adding a new repository** to the organization
-- **When updating the label taxonomy** in the source repo (`shoppy`)
-- **After manually adding labels** to `shoppy` that should be propagated
+- **After editing `labels/labels.json`** to propagate label changes
 
 ### Customizing Target Repos
 
@@ -109,20 +116,26 @@ To add or remove target repositories, edit `scripts/sync-labels.mjs`:
 
 ```javascript
 const TARGET_REPOS = [
-  'agents',
-  'hydrogen-storefront-starter',
-  'mcp-hydrogen-kit',
-  'your-new-repo',  // Add here
+  "shoppy",
+  "agents",
+  "hydrogen-storefront-starter",
+  "mcp-hydrogen-kit",
+  "your-new-repo", // Add here
 ];
 ```
 
-### Changing the Source Repo
+### Modifying Labels
 
-To use a different source repository, edit `scripts/sync-labels.mjs`:
+To add, remove, or modify labels:
 
-```javascript
-const SOURCE_REPO = 'your-source-repo';  // Change this
-```
+1. **Edit `labels/labels.json`** - This is the source of truth
+2. **Run the sync script** to propagate changes:
+
+   ```bash
+   node scripts/sync-labels.mjs
+   ```
+
+See [`labels/README.md`](../labels/README.md) for label taxonomy documentation.
 
 ---
 
@@ -166,6 +179,7 @@ The recommended label set for commerce-atoms projects:
 ### Colors
 
 Use consistent colors across labels:
+
 - **Type labels**: Blue (`#0e8a16` for bug, `#a2eeef` for enhancement, etc.)
 - **Priority labels**: Red/Orange (`#d93f0b` for high, `#fbca04` for medium, etc.)
 - **Status labels**: Yellow (`#fef2c0` for in-progress, etc.)
@@ -181,11 +195,11 @@ Use consistent colors across labels:
 gh auth login
 ```
 
-### "Source repository not found"
+### "Labels file not found"
 
-- Verify the repository exists: `gh repo view commerce-atoms/shoppy`
-- Check your access permissions
-- Ensure you're using the correct organization name
+- Verify `labels/labels.json` exists in the `.github` repository
+- Check that you're running the script from the correct directory
+- Ensure the file is valid JSON
 
 ### "Failed to create/update label"
 
@@ -195,8 +209,8 @@ gh auth login
 
 ### Labels not syncing
 
-- Check that the source repo (`shoppy`) has labels
-- Verify target repos exist and are accessible
+- Verify `labels/labels.json` is valid JSON
+- Check that target repos exist and are accessible
 - Review the script output for specific error messages
 
 ---
@@ -232,11 +246,12 @@ gh label delete "my-label" --repo commerce-atoms/shoppy
 
 ## Best Practices
 
-1. **Standardize first**: Create labels in the source repo (`shoppy`) first
+1. **Edit labels.json**: Always modify `labels/labels.json` as the source of truth
 2. **Sync regularly**: Run sync when adding new repos or updating labels
-3. **Document changes**: If you add new label categories, update this document
+3. **Document changes**: If you add new label categories, update `labels/README.md`
 4. **Non-destructive**: The script never deletes labels — remove manually if needed
 5. **Review output**: Always review the sync output to catch any issues
+6. **Version control**: Commit changes to `labels/labels.json` before running sync
 
 ---
 
@@ -257,4 +272,3 @@ Potential enhancements to the sync script:
 - **Script issues**: Open an issue in the `.github` repository
 - **Label taxonomy**: Discuss in organization discussions
 - **Permissions**: Contact organization admins
-

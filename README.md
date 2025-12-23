@@ -29,8 +29,8 @@ These files are automatically inherited by all repos in the organization:
 ### Tooling
 
 - **Label Sync Script** (`scripts/sync-labels.mjs`)
-  - One-off script to sync labels from a source repo to all other repos
-  - See [`OPS.md`](OPS.md) for usage instructions
+  - One-off script to sync labels from `labels/labels.json` to all repos
+  - See [`docs/ops.md`](docs/ops.md) for usage instructions
 
 ---
 
@@ -53,11 +53,12 @@ GitHub automatically looks for these files in the `.github` repository:
 
 ### Labels
 
+- **Source of truth**: `labels/labels.json` contains all label definitions
 - **One-time sync**: Run `scripts/sync-labels.mjs` to propagate labels
 - **New repos**: Re-run the script or manually add labels
-- **Label changes**: Update source repo (`shoppy`), then re-run script
+- **Label changes**: Edit `labels/labels.json`, then re-run script
 
-See [`OPS.md`](OPS.md) for detailed instructions.
+See [`docs/ops.md`](docs/ops.md) for detailed instructions.
 
 ---
 
@@ -65,18 +66,22 @@ See [`OPS.md`](OPS.md) for detailed instructions.
 
 ```text
 .github/
-├── .github/
-│   └── ISSUE_TEMPLATE/
-│       ├── bug.yml
-│       ├── feature.yml
-│       └── config.yml
-├── scripts/
+├── .github/                      # Auto-applied templates
+│   ├── ISSUE_TEMPLATE/
+│   │   ├── bug.yml
+│   │   ├── feature.yml
+│   │   └── config.yml
+│   └── pull_request_template.md
+├── scripts/                      # Ops scripts (manual run)
 │   └── sync-labels.mjs
-├── CONTRIBUTING.md
-├── SECURITY.md
-├── pull_request_template.md
-├── OPS.md
-└── README.md (this file)
+├── labels/                        # Source of truth
+│   ├── labels.json               # Canonical label definitions
+│   └── README.md                 # Label taxonomy
+├── docs/                          # Ops + governance docs
+│   └── ops.md                    # Operations guide
+├── CONTRIBUTING.md                # Auto-applied
+├── SECURITY.md                    # Auto-applied
+└── README.md                      # This file
 ```
 
 ---
