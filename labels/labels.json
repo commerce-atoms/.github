@@ -1,0 +1,87 @@
+[
+    {
+        "name": "bug",
+        "color": "d73a4a",
+        "description": "Something isn't working"
+    },
+    {
+        "name": "enhancement",
+        "color": "a2eeef",
+        "description": "New feature or request"
+    },
+    {
+        "name": "documentation",
+        "color": "0075ca",
+        "description": "Documentation improvements"
+    },
+    {
+        "name": "refactor",
+        "color": "7057ff",
+        "description": "Code refactoring"
+    },
+    {
+        "name": "performance",
+        "color": "fbca04",
+        "description": "Performance improvements"
+    },
+    {
+        "name": "chore",
+        "color": "c5def5",
+        "description": "Maintenance tasks"
+    },
+    {
+        "name": "priority: high",
+        "color": "d93f0b",
+        "description": "High priority"
+    },
+    {
+        "name": "priority: medium",
+        "color": "fbca04",
+        "description": "Medium priority"
+    },
+    {
+        "name": "priority: low",
+        "color": "0e8a16",
+        "description": "Low priority"
+    },
+    {
+        "name": "status: needs-triage",
+        "color": "fef2c0",
+        "description": "Needs review/triage"
+    },
+    {
+        "name": "status: in-progress",
+        "color": "fef2c0",
+        "description": "Work in progress"
+    },
+    {
+        "name": "status: blocked",
+        "color": "d93f0b",
+        "description": "Blocked by something"
+    },
+    {
+        "name": "status: on-hold",
+        "color": "ededed",
+        "description": "Temporarily on hold"
+    },
+    {
+        "name": "good first issue",
+        "color": "0e8a16",
+        "description": "Good for newcomers"
+    },
+    {
+        "name": "help wanted",
+        "color": "008672",
+        "description": "Extra attention is needed"
+    },
+    {
+        "name": "scope: breaking",
+        "color": "b60205",
+        "description": "Breaking change"
+    },
+    {
+        "name": "scope: cross-package",
+        "color": "1d76db",
+        "description": "Affects multiple packages"
+    }
+]
