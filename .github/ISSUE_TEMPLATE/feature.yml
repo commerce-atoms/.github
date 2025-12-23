@@ -1,0 +1,96 @@
+name: ✨ Feature Request
+description: Suggest a new feature or enhancement
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting a feature! Please fill out the form below.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem Statement
+      description: What problem does this feature solve? What use case does it address?
+      placeholder: |
+        As a [type of user], I want to [goal] so that [benefit].
+        
+        Currently, [describe the limitation or pain point]...
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed Solution
+      description: Describe your proposed solution or feature
+      placeholder: |
+        I propose that we...
+        
+        This would work by...
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      description: What other approaches have you considered?
+      placeholder: |
+        - Alternative 1: [description]
+        - Alternative 2: [description]
+    validations:
+      required: false
+
+  - type: textarea
+    id: examples
+    attributes:
+      label: Examples / Use Cases
+      description: Provide examples of how this feature would be used
+      placeholder: |
+        ```typescript
+        // Example usage
+        ```
+    validations:
+      required: false
+
+  - type: dropdown
+    id: scope
+    attributes:
+      label: Scope
+      description: What is the scope of this feature?
+      options:
+        - Single package (e.g., @commerce-atoms/variants)
+        - Multiple packages
+        - Cross-project (affects multiple repos)
+        - Documentation/tooling only
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: contribution
+    attributes:
+      label: Contribution
+      options:
+        - label: I am willing to implement this feature
+          required: false
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checklist
+      options:
+        - label: I have searched existing issues to ensure this feature hasn't been requested
+          required: true
+        - label: This feature aligns with commerce-atoms principles (composable, framework-agnostic, pure logic)
+          required: true
+        - label: I have provided all relevant information above
+          required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        **Note**: Feature requests should align with the [commerce-atoms principles](https://github.com/commerce-atoms/.github/blob/main/README.md). Features that add UI components, framework abstractions, or vendor lock-in are out of scope.
+
