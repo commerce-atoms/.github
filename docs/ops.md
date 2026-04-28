@@ -56,18 +56,24 @@ The label sync script reads labels from **`labels/labels.json`** (source of trut
    cd ~/Projects/commerce-atoms/.github
    ```
 
-2. **Run the sync script**
+2. **Install dev dependencies (one-time)**
 
    ```bash
-   node scripts/sync-labels.mjs
+   npm install
    ```
 
-3. **Review the output**
+3. **Run the sync script**
+
+   ```bash
+   npm run sync-labels
+   ```
+
+4. **Review the output**
 
    The script will:
 
    - Load labels from `labels/labels.json` (source of truth)
-   - Sync to each target repo: `shoppy`, `agents`, `hydrogen-storefront-starter`, `mcp-hydrogen-kit`
+   - Sync to each target repo: `shoppy`, `agents`, `hydrogen-storefront-starter`
    - Show progress for each label (created, updated, or skipped)
    - Display a summary at the end
 
@@ -77,7 +83,7 @@ The label sync script reads labels from **`labels/labels.json`** (source of trut
 🚀 Label Sync Script
 
 Source: labels/labels.json (source of truth)
-Targets: shoppy, agents, hydrogen-storefront-starter, mcp-hydrogen-kit
+Targets: shoppy, agents, hydrogen-storefront-starter
 
 📦 Syncing labels to commerce-atoms/agents...
   ✅ Created: bug
@@ -112,16 +118,15 @@ Run the sync script:
 
 ### Customizing Target Repos
 
-To add or remove target repositories, edit `scripts/sync-labels.mjs`:
+To add or remove target repositories, edit `scripts/sync-labels.ts`:
 
-```javascript
-const TARGET_REPOS = [
+```ts
+const TARGET_REPOS: readonly string[] = [
   "shoppy",
   "agents",
   "hydrogen-storefront-starter",
-  "mcp-hydrogen-kit",
   "your-new-repo", // Add here
-];
+] as const;
 ```
 
 ### Modifying Labels
@@ -132,7 +137,7 @@ To add, remove, or modify labels:
 2. **Run the sync script** to propagate changes:
 
    ```bash
-   node scripts/sync-labels.mjs
+   npm run sync-labels
    ```
 
 See [`labels/README.md`](../labels/README.md) for label taxonomy documentation.

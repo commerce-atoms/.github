@@ -1,0 +1,19 @@
+{
+  "name": "@commerce-atoms/dotgithub-ops",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Ops scripts for commerce-atoms organization (label sync, etc.). Not published.",
+  "type": "module",
+  "scripts": {
+    "sync-labels": "tsx scripts/sync-labels.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.5",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3"
+  }
+}

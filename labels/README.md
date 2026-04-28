@@ -4,7 +4,7 @@ This directory contains the canonical label definitions for all commerce-atoms r
 
 ## Source of Truth
 
-`labels.json` is the **source of truth** for all labels across the organization. The label sync script (`../scripts/sync-labels.mjs`) reads from this file to ensure consistency.
+`labels.json` is the **source of truth** for all labels across the organization. The label sync script (`../scripts/sync-labels.ts`) reads from this file to ensure consistency.
 
 ## Label Categories
 
@@ -56,7 +56,7 @@ Labels that indicate the scope of changes:
 2. **Run the sync script** to propagate changes:
 
    ```bash
-   node scripts/sync-labels.mjs
+   npm run sync-labels
    ```
 
 ## Color Guidelines

@@ -36,8 +36,7 @@ Each repository has its own detailed contributing guidelines:
 
 - **[shoppy](https://github.com/commerce-atoms/shoppy/blob/main/CONTRIBUTING.md)** — Commerce utilities monorepo
 - **[hydrogen-storefront-starter](https://github.com/commerce-atoms/hydrogen-storefront-starter/blob/main/CONTRIBUTING.md)** — Hydrogen storefront reference implementation
-- **[mcp-hydrogen-kit](https://github.com/commerce-atoms/mcp-hydrogen-kit)** — MCP tools for Hydrogen
-- **[agents](https://github.com/commerce-atoms/agents)** — AI assistance rules and personas
+- **[agents](https://github.com/commerce-atoms/agents)** — AI assistance rules, personas, and CLI ([`@commerce-atoms/agents`](https://www.npmjs.com/package/@commerce-atoms/agents))
 
 **Please read the project-specific CONTRIBUTING.md** for detailed guidelines on:
 - Development setup

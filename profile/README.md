@@ -8,8 +8,7 @@ Modular commerce tooling. Designed to be composed, audited, and reused.
 
 - [`shoppy`](https://github.com/commerce-atoms/shoppy) — Commerce utilities monorepo (variants, filters, urlstate, money, seo, etc.)
 - [`hydrogen-storefront-starter`](https://github.com/commerce-atoms/hydrogen-storefront-starter) — Production-ready Hydrogen starter
-- [`agents`](https://github.com/commerce-atoms/agents) — AI assistance (editor rules, expert personas)
-- [`mcp-hydrogen-kit`](https://github.com/commerce-atoms/mcp-hydrogen-kit) — ⚠️ Alpha — MCP tools for Hydrogen
+- [`agents`](https://github.com/commerce-atoms/agents) — AI assistance ([`@commerce-atoms/agents`](https://www.npmjs.com/package/@commerce-atoms/agents) on npm) — editor rules, expert personas, and a CLI (`init`, `sync`, `validate-architecture`)
 
 ---
 
