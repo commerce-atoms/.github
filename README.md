@@ -28,8 +28,9 @@ These files are automatically inherited by all repos in the organization:
 
 ### Tooling
 
-- **Label Sync Script** (`scripts/sync-labels.mjs`)
-  - One-off script to sync labels from `labels/labels.json` to all repos
+- **Label Sync Script** (`scripts/sync-labels.ts`)
+  - TypeScript ops script to sync labels from `labels/labels.json` to all target repos
+  - Run with `npm run sync-labels` (executed via `tsx`, no build step)
   - See [`docs/ops.md`](docs/ops.md) for usage instructions
 
 ---
@@ -54,7 +55,7 @@ GitHub automatically looks for these files in the `.github` repository:
 ### Labels
 
 - **Source of truth**: `labels/labels.json` contains all label definitions
-- **One-time sync**: Run `scripts/sync-labels.mjs` to propagate labels
+- **One-time sync**: Run `npm run sync-labels` to propagate labels
 - **New repos**: Re-run the script or manually add labels
 - **Label changes**: Edit `labels/labels.json`, then re-run script
 
@@ -72,8 +73,8 @@ See [`docs/ops.md`](docs/ops.md) for detailed instructions.
 │   │   ├── feature.yml
 │   │   └── config.yml
 │   └── pull_request_template.md
-├── scripts/                      # Ops scripts (manual run)
-│   └── sync-labels.mjs
+├── scripts/                      # Ops scripts (manual run, TypeScript via tsx)
+│   └── sync-labels.ts
 ├── labels/                        # Source of truth
 │   ├── labels.json               # Canonical label definitions
 │   └── README.md                 # Label taxonomy
@@ -81,6 +82,8 @@ See [`docs/ops.md`](docs/ops.md) for detailed instructions.
 │   └── ops.md                    # Operations guide
 ├── CONTRIBUTING.md                # Auto-applied
 ├── SECURITY.md                    # Auto-applied
+├── package.json                   # Dev deps for ops scripts (tsx, typescript, @types/node)
+├── tsconfig.json                  # Strict TS config for scripts/
 └── README.md                      # This file
 ```
 
