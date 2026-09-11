@@ -1,8 +1,6 @@
 # commerce-atoms
 
-> **Composable commerce building blocks** — small, focused modules for modern storefronts.
-
-Modular commerce tooling. Designed to be composed, audited, and reused.
+> **Composable commerce building blocks** — small, focused modules for modern storefronts. Modular commerce tooling. Designed to be composed, audited, and reused.
 
 ## Projects
 
